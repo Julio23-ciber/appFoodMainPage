@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "GuardarImgUser";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+<h2>GuardarImgUser</h2>
+
+@using (Html.BeginForm("GuardarImgUser", "AppFood", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <hr />
+    <div>
+        <label>id</label>
+        <input type="number" name="id" value="" />
+    </div>
+    <div>
+        <label>Imagen</label>
+        <input type="file" name="fileUpload" value="" accept="image/jpeg, image/png, image/jpg" />
+    </div>
+    <input type="submit"  value="" />
+</div>
+}  

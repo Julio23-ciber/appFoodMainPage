@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    List<appFoodMainPage.Models.Receta> lstRecestas = ViewBag.MostLikedRecetas;
+    List<appFoodMainPage.Models.Usuario> lstUser = ViewBag.userMostActive;
+    int puestoRecetas = 1;
+    int puestoUser = 1;
+}
+
+<div class="cardBox">
+    <div class="card">
+        <div>
+            <div class="numbers">@ViewBag.CantRecetas</div>
+            <div class="cardName">Recetas</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="receipt-outline"></ion-icon>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">@ViewBag.CantUsuarios</div>
+            <div class="cardName">Usuarios</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="people-outline"></ion-icon>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">@ViewBag.CantCategorias</div>
+            <div class="cardName">Categorias</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="layers-outline"></ion-icon>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">@ViewBag.CantCocinas</div>
+            <div class="cardName">Tipos de Cocina</div>
+        </div>
+        <div class="iconBx">
+            <ion-icon name="globe-outline"></ion-icon>
+        </div>
+    </div>
+</div>
+
+<div class="tabla-box">
+ 
+    <div class="tabla-item">
+         
+      <table class="tabla">
+            <tr>
+                <p class="tabla-titulo">
+                    Recetas más populares 
+                </p>
+            </tr>
+            <tr>
+                <th>
+                    <h1>#</h1>
+                </th>
+                <th>
+                    <h1>img</h1>
+                </th>
+                <th>
+                    <h1>Receta</h1>
+                </th>
+                <th>
+                    <h1>Likes</h1>
+                    
+                </th>
+            </tr>
+            @foreach (var item in lstRecestas)
+            {
+                <tr class = "tabla-tr">
+                    <td>
+                        @{
+                        
+                            @Html.Raw(puestoRecetas.ToString());
+                            puestoRecetas++;
+                        }
+                       
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nro_likes)
+                    </td>
+                </tr>
+            }
+            </table>
+        </div>
+    <div class="tabla-item">
+       
+        <table class="tabla">
+            <tr>
+                <p class="tabla-titulo">
+                    Usuarios más activos
+                </p>
+            </tr>            
+            <tr>
+                <th>
+                    <h1>#</h1>
+                </th>
+                <th>
+                    <h1>img</h1>
+                </th>
+                <th>
+                    <h1>Nombre</h1>
+                </th>
+                <th>
+                    <h1>recetas</h1>
+                </th>
+            </tr>
+            @foreach (var i in lstUser)
+            {
+                <tr class = "tabla-tr">
+                    <td>
+                        @{
+                            @Html.Raw(puestoUser.ToString());
+                            puestoUser++;
+                        }
+                    </td>
+                    <td>
+                       
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => i.id)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+

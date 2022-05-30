@@ -1,0 +1,101 @@
+﻿@model IEnumerable<appFoodMainPage.Models.Usuario>
+
+@{
+    ViewBag.Title = "Usuario";
+    Layout = "~/Views/Shared/_Main.cshtml";
+}
+
+ 
+
+<div class="tabla-item">
+    <table class="tabla">
+        <tr>
+            <p class="tabla-titulo"> 
+                Usuarios
+            </p>
+        </tr>
+        <tr>
+            <p>
+                @Html.ActionLink("Create New", "Create", null, new {@class = "boton" })
+            </p>
+        </tr>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Imagen
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Rol
+            </th>
+            <th>
+                Recetas
+            </th>
+            <th>
+                Estado
+            </th>
+            <th>
+                Acciones
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    <img src="https://localhost:44388/api/Usuario/MostarImagenUsuario?idUsuario=@item.id" alt="user image" width="80"/>
+                
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+
+                </td>
+                <td>
+                    @{
+                        int tipo = item.tipo_usuario;
+                        string rol = (tipo == 1) ? "Admin" : "Autor";
+                        @Html.Raw(rol);
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantRecetas)
+
+                </td>
+                <td>
+                    @{
+                        int estado = item.estado;
+                        string est = (estado == 1) ? "Activo" : "Inactivo";
+                        @Html.Raw(est);
+                    }
+
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "AppFood", new { id= item.id})" class="boton">
+                        <ion-icon name="create" class="boton-crud"></ion-icon>
+                    </a>
+                    <a href="@Url.Action("Edit", "AppFood", new { id= item.id})" class="boton">
+                        <ion-icon name="trash" class="boton-crud"></ion-icon>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

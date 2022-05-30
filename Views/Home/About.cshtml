@@ -1,0 +1,124 @@
+﻿@model IEnumerable<appFoodMainPage.Models.receta>
+
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>About</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.userid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.duracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nroPlatos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ingredientes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pasos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.website_url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.youtube_url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nro_vistas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nro_likes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_creacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_actualizacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cocina.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dificultad_receta.dificultad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado_receta.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.userid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.duracion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nroPlatos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ingredientes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pasos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.website_url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.youtube_url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nro_vistas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nro_likes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_creacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_actualizacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cocina.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dificultad_receta.dificultad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado_receta.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

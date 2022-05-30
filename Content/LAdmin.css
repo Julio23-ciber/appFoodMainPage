@@ -1,0 +1,440 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+
+:root {
+    --blue: #1D3557;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    left: 10px;
+    width: 100%;
+}
+
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+    .navigation.active {
+        width: 80px;
+    }
+
+    .navigation ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+        .navigation ul li {
+            position: relative;
+            width: 100%;
+            list-style: none;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+            .navigation ul li.hovered,
+            .navigation ul li:hover {
+                background: var(--white);
+            }
+
+            .navigation ul li:nth-child(1) {
+                margin-bottom: 40px;
+                pointer-events: none;
+            }
+
+            .navigation ul li a {
+                position: relative;
+                display: block;
+                width: 100%;
+                display: flex;
+                text-decoration: none;
+                color: var(--white);
+            }
+
+            .navigation ul li.hovered a,
+            .navigation ul li:hover a {
+                color: var(--blue);
+            }
+
+            .navigation ul li a .icon {
+                position: relative;
+                display: block;
+                min-width: 60px;
+                height: 60px;
+                line-height: 70px;
+                text-align: center;
+            }
+
+                .navigation ul li a .icon ion-icon {
+                    font-size: 1.75em;
+                }
+
+            .navigation ul li a .title {
+                position: relative;
+                display: block;
+                padding: 0 10px;
+                height: 60px;
+                line-height: 60px;
+                text-align: start;
+                white-space: nowrap;
+            }
+
+            /*curved outside li*/
+            .navigation ul li.hovered a::before,
+            .navigation ul li:hover a::before {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: -50px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                box-shadow: 35px 35px 0 10px var(--white);
+                background: transparent;
+                pointer-events: none;
+            }
+
+            .navigation ul li.hovered a::after,
+            .navigation ul li:hover a::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                bottom: -50px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                box-shadow: 35px -35px 0 10px var(--white);
+                background: transparent;
+                pointer-events: none;
+            }
+
+/*Main*/
+
+.main {
+    position: absolute;
+    width: calc(100% - 80px);
+    left: 180px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}
+
+    .main.active {
+        width: calc(100% + 10px);
+        left: -50px;
+    }
+/*top bar*/
+
+.topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px
+}
+
+
+/*toogle*/
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+/*Search*/
+
+.search {
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+}
+
+    .search label {
+        position: relative;
+        width: 100%
+    }
+
+#inputSearch {
+    min-width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+    position: absolute;
+    top: 30%;
+    left: 10px;
+    font-size: 1.2em;
+}
+
+/*user*/
+
+.user {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+    .user img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 30px;
+}
+
+    .cardBox .card {
+        position: relative;
+        background: var(--white);
+        padding: 30px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+        cursor: pointer;
+    }
+
+        .cardBox .card .numbers {
+            position: relative;
+            font-weight: 500;
+            font-size: 2.5em;
+            color: var(--blue);
+        }
+
+        .cardBox .card .cardName {
+            color: var(--black2);
+            font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        .cardBox .card .iconBx {
+            font-size: 3.5em;
+            color: var(--black2);
+        }
+
+.graficos {
+    position: relative;
+    width: 100%;
+    padding: 3px;
+    display: flex;
+    /*grid-template-columns: repeat(4,1fr);
+    grid-gap: 30px;*/
+    flex-wrap: wrap;
+}
+
+    .graficos .cardGraf {
+        position: relative;
+        background: var(--white);
+        padding: 5px;
+        margin: 5px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+        cursor: pointer;
+    }
+
+
+/*Estilos para la renderizacion del body content y no joder el boostrap XD*/
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    max-width: 100%;
+}
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+form input {
+    margin-bottom: 15px;
+}
+
+form select {
+    margin-bottom: 15px;
+}
+
+
+/*Estilos de tablas*/
+
+ 
+ /*Colo de la cabecera de las columnas*/
+.tabla-box{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 40px;
+    row-gap: 0px;
+    align-items: flex-start;
+    margin-top: 50px;
+    
+}
+.tabla-titulo {
+    position: relative;
+    bottom: 5%;
+    font-size: 1.5em;
+    font-weight: 500;
+    border-radius: 12px;
+    color: #FFF;
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+    background-color: var( --blue);
+}
+.tabla-item {
+    background-color: #dae2fa;
+    border-radius: 15px;
+    margin-top: 25px;
+    height: 60vh;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.3);
+}
+.tabla th h1 {
+    font-weight: bold;
+    font-size: 15px;
+    text-align: left;
+    color: #fff;
+}
+
+.tabla td {
+    font-weight: normal;
+    font-size: 25px;
+    -webkit-box-shadow: 0 2px 2px -2px #cedadb;
+    -moz-box-shadow: 0 2px 2px -2px #cedadb;
+    box-shadow: 0 2px 2px -2px #cedadb;
+}
+
+.tabla {
+    text-align: left;
+    width: 100%;
+    display: table;
+}
+
+    .tabla td, .tabla th {
+        padding-bottom: 2%;
+        padding-top: 2%;
+        padding-left: 2%;
+    }
+
+/* Background-color of the odd rows */
+    .tabla tr:nth-child(odd) {
+        
+        background-color: #d7f4ff;
+    }
+
+/* Background-color of the even rows */
+    .tabla tr:nth-child(even) {
+        background-color: #d7f4ff;
+    }
+
+    .tabla th {
+        background-color: #274C77;
+        border-bottom: solid 2px #2b4f81;
+        color: #fff;
+    }
+ 
+
+    .tabla tr:hover {
+        background-color: #FDE8E9;
+        border-radius: 25px;
+    }
+
+ 
+@media (max-width: 800px) {
+    .tabla td:nth-child(4),
+    .tabla th:nth-child(4) {
+        display: none;
+    }
+} 
+
+.tabla td {
+    font-weight: bold;
+    font-size: 1em;
+    color: #525252;
+ 
+}
+.tabla-tr{
+    height: 65px;
+    
+}
+
+/**
+    Boton Crear
+*/
+
+.boton{
+    font-weight: bold;
+    color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    background-color: #011638;
+    border-radius: 15px;
+}
+    .boton:hover {
+        background-color: #580C1F;
+        text-decoration: none;
+        color: #f5f5f5;
+        text-align: center;
+    }
+.boton-crud{
+    font-size: 20px;
+ 
+}
